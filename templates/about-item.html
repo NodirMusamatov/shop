@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+
+	{% block content %}
+    <div id="back2top"><i class="fa fa-angle-up"></i></div>
+    <div class="loader"></div>
+    <div class="page-wrap">
+      <div class="ps-section--hero"><img src="/static/images/hero/03.jpg" alt="">
+        <div class="ps-section__content text-center">
+          <h3 class="ps-section__title">НАША ВЫПЕЧКА</h3>
+          <div class="ps-breadcrumb">
+            <ol class="breadcrumb">
+              <li><a href="/">Главная</a></li>
+              <li class="active">О нас</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="ps-section ps-section--about pt-100 pb-40">
+        <div class="container">
+          <div class="row">
+                <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 ">
+                  <div class="ps-section__header text-center">
+                    <div class="ps-section__top">Наш пекарь</div>
+                    <h3 class="ps-section__title"> Ms. {{ blog.last_name }} {{ blog.first_name }}</h3>
+                  </div>
+                  <div class="ps-section__content text-center">
+                    <p> {{ blog.mini_description }}  </p>
+                    <div class="ps-about__sign text-center mb-30 mt-40"><img src="/media/{{ blog.signature }}" alt=""></div>
+                    <p class="ps-about-sign">{{ blog.position }}</p>
+                  </div>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 "><img src="/media/{{ blog.photo }}" alt="">
+                </div>
+          </div>
+        </div>
+      </div>
+      <div class="ps-section ps-section--award pt-80 pb-40">
+        <div class="container">
+          <div class="ps-section__header text-center mb-50">
+            <div class="ps-section__top">Our Record</div>
+            <h3 class="ps-section__title">WINNER AWARDS</h3>
+          </div>
+          <div class="ps-section__content">
+            <div class="row">
+                  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+                    {% for award in awards %}
+                    <div class="ps-award text-center">
+                      <div class="ps-award__icon"><img src="/media/{{ award.logo }}" alt=""></div>
+                      <div class="ps-award__content">
+                        <h3> {{ award.title }} </h3><span> {{ award.year }} </span>
+                        <p> {{ award.mini_description }} </p>
+                      </div>
+                    </div>
+                    {% endfor %}
+
+
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="ps-section ps-section--team ps-section--team-2 pt-80 pb-80">
+        <div class="container">
+          <div class="ps-section__header text-center">
+            <div class="ps-section__top">Golden Hand</div>
+            <h3 class="ps-section__title ps-section__title--full">OUR TEAM</h3>
+          </div>
+          <div class="ps-section__content">
+            <div class="row">
+                  {% for cheff in cheffs %}
+                  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+                    <article class="ps-people ps-people--2">
+                      <div class="ps-people__thumbnail"><a class="ps-people__overlay" href="/about-item/{{ cheff.id }}/"></a><img src="/media/{{ cheff.photo }}" alt=""></div>
+                      <div class="ps-people__content">
+                        <h4>{{ cheff.last_name }} {{ cheff.first_name }}</h4><span class="ps-people__position">{{ cheff.position }}</span>
+                        <p>{{ cheff.mini_description }}</p>
+                            <ul class="ps-people__social">
+                              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                              <li><a href="#"><i class="fa fa-google"></i></a></li>
+                              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            </ul>
+                      </div>
+                    </article>
+                  </div>
+                  {% endfor %}
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <div class="ps-section ps-section--partner">
+        <div class="container">
+          {% for partner in partners %}
+          {% if partner  > 6 %}
+          <div class="owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="10000" data-owl-gap="40" data-owl-nav="false" data-owl-dots="false" data-owl-animate-in="" data-owl-animate-out="" data-owl-item="6" data-owl-item-xs="3" data-owl-item-sm="4" data-owl-item-md="5" data-owl-item-lg="6" data-owl-nav-left="&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;/i&gt;" data-owl-nav-right="&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;/i&gt;">
+              <a href="#"><img src="/media/{{ partner.logo }}" alt=""></a>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+    {% endblock %}
