@@ -113,15 +113,15 @@
                     <h3 class="ps-section__title ps-section__title--left">{{category.title}}</h3>
                   </div>
                   <div class="ps-section__content">
-                    {% for menu in menus %}
-                    {% if menu.category.id == category.id %}
+                    {% for rebate_menu in rebate_menus %}
+                    {% if rebate_menu.category.id == category.id %}
                     <div class="ps-product--list">
                       <div class="ps-product__thumbnail"><a class="ps-product__overlay" href="product-detail.html"></a><img src="/static/images/cake/img-cake-12.jpg" alt=""></div>
                       <div class="ps-product__content">
-                        <h4 class="ps-product__title"><a href="product-detail.html">{{menu.title}}</a></h4>
-                        <p>Lollipop dessert donut marzipan cookie bonbon sesame snaps chocolate.</p>
+                        <h4 class="ps-product__title"><a href="product-detail.html">{{rebate_menu.title}}</a></h4>
+                        <p>{{ rebate_menu.description }}</p>
                         <p class="ps-product__price">
-                          <del>£ {{menu.old_price}}</del>£ {{menu.new_price}}
+                          <del>£ {{rebate_menu.old_price}}</del>£ {{rebate_menu.new_price}}
                         </p><a class="ps-btn ps-btn--xs" href="product-detail.html">Подробнее<i class="fa fa-angle-right"></i></a>
                       </div>
                     </div>
@@ -144,7 +144,7 @@
                     {% endfor %}
                     <ul class="ps-list ps-list--dot">
 
-                    </ul><a class="ps-btn ps-section__morelink" href="#">Read more<i class="fa fa-angle-right"></i></a>
+                    </ul><a class="ps-btn ps-section__morelink" href="/about-item/0/">Read more<i class="fa fa-angle-right"></i></a>
                   </div>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">

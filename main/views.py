@@ -10,6 +10,7 @@ def indexHandler(request):
         reviews = Review.objects.filter(status=0).order_by('-rating')
         menu = Menu.objects.filter(status=0).order_by('-rating')
         best_menus = Menu.objects.filter(is_best_seller=True)
+        rebate_menus = Menu.objects.filter(is_rebate=True)
         cheffs = Cheff.objects.filter(status=0).order_by('-rating')[:2]
         partners = Partner.objects.filter(status=0).order_by('-rating')
         informations = Information.objects.filter(status=0)
@@ -29,7 +30,8 @@ def indexHandler(request):
             'categorys': categorys,
             'sizes': sizes,
             'best_menus': best_menus,
-            'awards': awards
+            'awards': awards,
+            'rebate_menus': rebate_menus
         })
 
 
@@ -75,6 +77,24 @@ def aboutItemHandler(request, cheff_id):
         'informations': informations,
         'page': 'about',
         'blog': blog
+    })
+
+def productHandler(request):
+    menu = Menu.objects.filter(status=0).order_by('-rating')[:6]
+    best_menus = Menu.objects.filter(is_best_seller=True)[:3]
+    rebate_menus = Menu.objects.filter(is_rebate=True)
+    informations = Information.objects.filter(status=0)
+    categorys = Category.objects.filter(is_main=True)
+    sizes = Size.objects.filter(status=0)
+
+    return render(request, 'product.html', {
+        'page': 'product',
+        'informations': informations,
+        'categorys': categorys,
+        'sizes': sizes,
+        'best_menus': best_menus,
+        'rebate_menus': rebate_menus,
+        'menu': menu
     })
 
 
