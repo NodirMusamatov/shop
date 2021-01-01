@@ -3558,6 +3558,14 @@ textarea.form-control {
   background-image: -webkit-linear-gradient(left, #ee7560, #ff5858);
   background-image: linear-gradient(to right,#ee7560, #ff5858);
 }
+.ps-pagination .pagination li > a.active {
+  color: #fff;
+  background-color: transparent;
+  border-color: #fff;
+  background-color: #ee7560;
+  background-image: -webkit-linear-gradient(left, #ee7560, #ff5858);
+  background-image: linear-gradient(to right,#ee7560, #ff5858);
+}
 
 .ps-pagination .pagination li > a:hover:after {
   border-color: #ff5858;

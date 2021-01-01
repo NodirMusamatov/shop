@@ -86,14 +86,23 @@
                     {% endfor %}
                   </div>
                       <div class="ps-pagination">
-                        <ul class="pagination">
-                          <li><a href="#"><i class="fa fa-arrow-left"></i></a></li>
-                          <li class="active"><a href="#">1</a></li>
-                          <li><a href="#">2</a></li>
-                          <li><a href="#">3</a></li>
-                          <li><a href="#">4</a></li>
-                          <li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
-                        </ul>
+                          <ul class="pagination">
+                                  {% if p != 1 %}
+                                  <li><a class="first" href="/product?limit={{ limit }}&p={{ prev_p }}"><i class="fa fa-angle-left"></i></a></li>
+                                  {% endif %}
+
+                                  {% for x in page_range %}
+                                    {% if p == x %}
+                                    <li><a class="active">{{ x }}</a></li>
+                                    {% else %}
+                                    <li><a href="/product?limit={{ limit }}&p={{ x }}">{{ x }}</a></li>
+                                    {% endif %}
+                                  {% endfor %}
+
+                                  {% if p < page_count  %}
+                                  <li><a class="last" href="/product?limit={{ limit }}&p={{ next_p }}"><i class="fa fa-angle-right"></i></a></li>
+                                  {% endif %}
+                          </ul>
                       </div>
                 </div>
               </div>
@@ -112,7 +121,7 @@
                                 </div>
                                 <div class="ps-widget__content">
                                   <ul class="ps-list--circle">
-                                    <li class="current"><a href="product-listing.html"><span class="circle"></span>All bakery (321)</a></li>
+                                    <li class="current"><a href="product-listing.html"><span class="circle"></span>All bakery ({{ item_count }})</a></li>
                                     {% for category in categorys %}
                                     <li><a href="#"><span class="circle"></span>{{ category.title }}</a></li>
                                     {% endfor %}

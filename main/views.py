@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render
 from main.models import Slider, Review, Menu, Cheff, Partner, Register, Information, Category, Size, Award
+import math
 # Create your views here.
 
 
@@ -80,11 +81,27 @@ def aboutItemHandler(request, cheff_id):
     })
 
 def productHandler(request):
-    menu = Menu.objects.filter(status=0).order_by('-rating')[:6]
+    limit = int(request.GET.get('limit', 6))
+    p = int(request.GET.get('p', 1))
+    stop = p * limit
+    start = (p - 1) * limit
+    menu = Menu.objects.filter(status=0).order_by('-rating')[start:stop]
+    item_count = Menu.objects.count()
+    page_count = math.ceil(item_count / limit)
+    page_range = range(1, page_count + 1)
+    prev_p = p - 1
+    next_p = p + 1
+
+
+
+
+
+
+
     best_menus = Menu.objects.filter(is_best_seller=True)[:3]
     rebate_menus = Menu.objects.filter(is_rebate=True)
     informations = Information.objects.filter(status=0)
-    categorys = Category.objects.filter(is_main=True)
+    categorys = Category.objects.filter()
     sizes = Size.objects.filter(status=0)
 
     return render(request, 'product.html', {
@@ -94,7 +111,22 @@ def productHandler(request):
         'sizes': sizes,
         'best_menus': best_menus,
         'rebate_menus': rebate_menus,
-        'menu': menu
+        'menu': menu,
+
+        'limit': limit,
+        'p': p,
+        'stop': stop,
+        'start': start,
+        'item_count': item_count,
+        'page_count': page_count,
+        'page_range': page_range,
+        'prev_p': prev_p,
+        'next_p': next_p
     })
+
+def page404Handler(request):
+    return render(request, '404.html', {})
+
+
 
 
