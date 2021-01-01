@@ -95,7 +95,7 @@
                                     {% if p == x %}
                                     <li><a class="active">{{ x }}</a></li>
                                     {% else %}
-                                    <li><a href="/product?limit={{ limit }}&p={{ x }}">{{ x }}</a></li>
+                                    <li><a href="/product?limit={{ limit }}&p={{ x }}{% if q %}&q={{ q }}{% endif %}{% if category_id %}&category_id={{ category_id }}{% endif %}">{{ x }}</a></li>
                                     {% endif %}
                                   {% endfor %}
 
@@ -110,8 +110,8 @@
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 col-lg-pull-9 col-md-pull-9">
               <div class="ps-sidebar">
                               <aside class="ps-widget ps-widget--sidebar ps-widget--search">
-                                <form method="post" action="search-result.html">
-                                  <input class="form-control" type="text" placeholder="Type here bakery name...">
+                                <form method="get" action="/product/">
+                                  <input class="form-control" name="q" type="text" placeholder="title...">
                                   <button type="submit"><i class="ps-icon--search"></i></button>
                                 </form>
                               </aside>
@@ -121,9 +121,9 @@
                                 </div>
                                 <div class="ps-widget__content">
                                   <ul class="ps-list--circle">
-                                    <li class="current"><a href="product-listing.html"><span class="circle"></span>All bakery ({{ item_count }})</a></li>
+                                    <li {% if not category_id %} class="current" {% endif %}><a href="/product/?limit={{ limit }}&category_id=0"><span class="circle"></span>All bakery ({{ menu_count }})</a></li>
                                     {% for category in categorys %}
-                                    <li><a href="#"><span class="circle"></span>{{ category.title }}</a></li>
+                                    <li {% if category_id == category.id %} class="current" {% endif %}><a href="/product/?limit={{ limit }}&category_id={{ category.id }}"><span class="circle"></span>{{ category.title }}{% if category_id == category.id %} ({{ item_count }}) {% endif %}</a></li>
                                     {% endfor %}
                                   </ul>
                                 </div>

@@ -81,19 +81,33 @@ def aboutItemHandler(request, cheff_id):
     })
 
 def productHandler(request):
+    q = request.GET.get('q', '')
+    category_id = int(request.GET.get('category_id', 0))
+
     limit = int(request.GET.get('limit', 6))
     p = int(request.GET.get('p', 1))
     stop = p * limit
     start = (p - 1) * limit
-    menu = Menu.objects.filter(status=0).order_by('-rating')[start:stop]
-    item_count = Menu.objects.count()
+
+    if q:
+        menu = Menu.objects.filter(status=0).filter(title__contains=q).order_by('-rating')[start:stop]
+        item_count = Menu.objects.filter(status=0).filter(title__contains=q).count()
+    else:
+        if category_id:
+            menu = Menu.objects.filter(status=0).filter(category__id=category_id).order_by('-rating')[start:stop]
+            item_count = Menu.objects.filter(status=0).filter(category__id=category_id).count()
+        else:
+            menu = Menu.objects.filter(status=0).order_by('-rating')[start:stop]
+            item_count = Menu.objects.filter(status=0).count()
+
+
+
     page_count = math.ceil(item_count / limit)
     page_range = range(1, page_count + 1)
     prev_p = p - 1
     next_p = p + 1
 
-
-
+    menu_count = Menu.objects.filter(status=0).count()
 
 
 
@@ -112,6 +126,7 @@ def productHandler(request):
         'best_menus': best_menus,
         'rebate_menus': rebate_menus,
         'menu': menu,
+        'menu_count':menu_count,
 
         'limit': limit,
         'p': p,
@@ -121,7 +136,10 @@ def productHandler(request):
         'page_count': page_count,
         'page_range': page_range,
         'prev_p': prev_p,
-        'next_p': next_p
+        'next_p': next_p,
+
+        'category_id':category_id,
+        'q':q
     })
 
 def page404Handler(request):
