@@ -49,7 +49,7 @@
               {% for best_menu in best_menus %}
               <div class="ps-product">
                 <div class="ps-product__thumbnail">
-                  <div class="ps-badge"><span>-50%</span></div><a class="ps-product__overlay" href="product-detail.html"></a><img src="/media/{{ best_menu.photo }}" alt="">
+                  <div class="ps-badge"><span>-50%</span></div><a class="ps-product__overlay" href="#"></a><img src="/media/{{ best_menu.photo }}" alt="">
                   <ul class="ps-product__action">
                     <li><a class="popup-modal" href="#quickview-modal" data-effect="mfp-zoom-out" data-tooltip="View"><i class="ps-icon--search"></i></a></li>
                     <li><a href="#" data-tooltip="Add to wishlist"><i class="ps-icon--heart"></i></a></li>
@@ -57,7 +57,7 @@
                     <li><a href="#" data-tooltip="Add to cart"><i class="ps-icon--shopping-cart"></i></a></li>
                   </ul>
                 </div>
-                <div class="ps-product__content"><a class="ps-product__title" href="product-detail.html">{{ best_menu.title }}</a>
+                <div class="ps-product__content"><a class="ps-product__title" href="/product/{{ best_menu.id }}/">{{ best_menu.title }}</a>
                   <div class="ps-product__category"><a class="ps-product__category" href="product-listing.html">cupcake</a><a class="ps-product__category" href="product-listing.html">sweet</a><a class="ps-product__category" href="product-listing.html">bio</a>
                   </div>
                   <select class="ps-rating">
@@ -116,13 +116,13 @@
                     {% for rebate_menu in rebate_menus %}
                     {% if rebate_menu.category.id == category.id %}
                     <div class="ps-product--list">
-                      <div class="ps-product__thumbnail"><a class="ps-product__overlay" href="product-detail.html"></a><img src="/static/images/cake/img-cake-12.jpg" alt=""></div>
+                      <div class="ps-product__thumbnail"><a class="ps-product__overlay" href="/product/{{ rebate_menu.id }}/"></a><img src="/media/{{ rebate_menu.photo }}" alt=""></div>
                       <div class="ps-product__content">
                         <h4 class="ps-product__title"><a href="product-detail.html">{{rebate_menu.title}}</a></h4>
                         <p>{{ rebate_menu.description }}</p>
                         <p class="ps-product__price">
                           <del>£ {{rebate_menu.old_price}}</del>£ {{rebate_menu.new_price}}
-                        </p><a class="ps-btn ps-btn--xs" href="product-detail.html">Подробнее<i class="fa fa-angle-right"></i></a>
+                        </p><a class="ps-btn ps-btn--xs" href="/product/{{ rebate_menu.id }}/">Подробнее<i class="fa fa-angle-right"></i></a>
                       </div>
                     </div>
                     {% endif %}
@@ -176,7 +176,7 @@
       <div class="ps-section ps-section--partner">
         <div class="container">
 
-          <a class="owl-slider"       >
+          <a class="owl-slider">
             {% for partner in partners %}
             <a href=""><img src="/media/{{ partner.logo }}" alt=""></a>
             {% endfor %}

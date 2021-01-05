@@ -50,7 +50,7 @@ class Menu(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     description = models.TextField()
     photo = models.ImageField(upload_to='upload')
-    old_price = models.FloatField(max_length=300,default=0, blank=True)
+    old_price = models.FloatField(max_length=300, default=0, blank=True)
     new_price = models.FloatField(max_length=300, default=0)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)

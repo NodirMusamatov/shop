@@ -84,7 +84,7 @@ def productHandler(request):
     q = request.GET.get('q', '')
     category_id = int(request.GET.get('category_id', 0))
 
-    limit = int(request.GET.get('limit', 6))
+    limit = int(request.GET.get('limit', 3))
     p = int(request.GET.get('p', 1))
     stop = p * limit
     start = (p - 1) * limit
@@ -139,12 +139,35 @@ def productHandler(request):
         'next_p': next_p,
 
         'category_id':category_id,
-        'q':q
+        'q': q
     })
 
 def page404Handler(request):
     return render(request, '404.html', {})
 
+
+def ProductDetailHandler(request, product_id):
+    product = Menu.objects.get(id=int(product_id))
+
+
+    reviews = Review.objects.filter(status=0).order_by('-rating')
+    menu = Menu.objects.filter(status=0).order_by('-rating')
+    cheffs = Cheff.objects.filter(status=0).order_by('-rating')[:2]
+    informations = Information.objects.filter(status=0)
+    categorys = Category.objects.filter()
+    sizes = Size.objects.filter(status=0)
+
+
+    return render(request, 'product-detail.html', {
+        'product': product,
+        'page': 'product',
+        'reviews': reviews,
+        'menus': menu,
+        'cheffs': cheffs,
+        'informations': informations,
+        'categorys': categorys,
+        'sizes': sizes
+    })
 
 
 

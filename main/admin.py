@@ -14,11 +14,9 @@ admin.site.register(Review, ReviewAdmin)
 
 
 
-
 class MenuAdmin(admin.ModelAdmin):
     pass
 admin.site.register(Menu, MenuAdmin)
-
 
 
 
@@ -65,3 +63,4 @@ class AwardAdmin(admin.ModelAdmin):
     pass
 
 admin.site.register(Award, AwardAdmin)
+
