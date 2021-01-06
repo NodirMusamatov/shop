@@ -8,6 +8,7 @@
      .ps-banner--home-1:before {
         top: 0;
         background: url(static/images/background/down.png) repeat-x;
+
       }
 
       .ps-banner--home-1:after {
@@ -25,12 +26,12 @@
               {% for slider in sliders %}
               <li data-index="rs-{{slider.id }}" data-transition="slidingoverlayhorizontal" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="/media/{{ slider.photo }}" data-rotate="0" data-saveperformance="off" data-title="Web Show" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description=""><img class="rev-slidebg" src="/media/{{ slider.photo }}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" data-no-retina>
                 <div class="tp-caption ps-banner__caption" id="layer01" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-100','-80','-120','-120']" data-width="['none','none','none','400']" data-whitespace="['nowrap','nowrap','nowrap','normal']" data-type="text" data-responsive_offset="on" data-frames="[{&quot;from&quot;:&quot;z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;&quot;,&quot;speed&quot;:1500,&quot;to&quot;:&quot;o:1;&quot;,&quot;delay&quot;:1700,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1000,&quot;to&quot;:&quot;x:left(R);&quot;,&quot;ease&quot;:&quot;Power3.easeIn&quot;}]" style=" z-index: 7; white-space: nowrap;text-transform:left;">
-                  {{ slider.title }}
+                  {{ slider.main_title }}
                 </div>
                 <div class="tp-caption ps-banner__description" id="layer02" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']" data-type="text" data-responsive_offset="on" data-textAlign="['center','center','center','center']" data-frames="[{&quot;from&quot;:&quot;z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;&quot;,&quot;speed&quot;:1500,&quot;to&quot;:&quot;o:1;&quot;,&quot;delay&quot;:1500,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1000,&quot;to&quot;:&quot;x:left(R);&quot;,&quot;ease&quot;:&quot;Power3.easeIn&quot;}]">
-                  {{ slider.description }} <br/>
+                  {{ slider.mini_description }} <br/>
                 </div>
-                <a class="tp-caption ps-btn ps-btn--lg" href="#" id="layer03" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['80','70','70','70']" data-type="text" data-responsive_offset="on" data-textAlign="['center','center','center','center']" data-frames="[{&quot;from&quot;:&quot;z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;&quot;,&quot;speed&quot;:1500,&quot;to&quot;:&quot;o:1;&quot;,&quot;delay&quot;:1500,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1000,&quot;to&quot;:&quot;x:left(R);&quot;,&quot;ease&quot;:&quot;Power3.easeIn&quot;}]">TRY OUR CUPCAKES <i class="fa fa-angle-right"></i></a>
+                <a class="tp-caption ps-btn ps-btn--lg" href="/product/" id="layer03" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['80','70','70','70']" data-type="text" data-responsive_offset="on" data-textAlign="['center','center','center','center']" data-frames="[{&quot;from&quot;:&quot;z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;&quot;,&quot;speed&quot;:1500,&quot;to&quot;:&quot;o:1;&quot;,&quot;delay&quot;:1500,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1000,&quot;to&quot;:&quot;x:left(R);&quot;,&quot;ease&quot;:&quot;Power3.easeIn&quot;}]">Наши продукты <i class="fa fa-angle-right"></i></a>
               </li>
               {% endfor %}
             </ul>
@@ -41,24 +42,29 @@
       <section class="ps-section ps-section--best-seller pt-40 pb-100">
         <div class="container">
           <div class="ps-section__header text-center mb-50">
-            <h4 class="ps-section__top">Sweet Cupcakes</h4>
-            <h3 class="ps-section__title ps-section__title--full">BEST SELLER</h3>
+            <h4 class="ps-section__top">Сладости</h4>
+            <h3 class="ps-section__title ps-section__title--full">Часто продаваемые сладости</h3>
           </div>
           <div class="ps-section__content">
             <div class="owl-slider owl-slider--best-seller" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="30" data-owl-nav="true" data-owl-dots="false" data-owl-animate-in="" data-owl-animate-out="" data-owl-item="4" data-owl-item-xs="1" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-nav-left="&lt;i class=&quot;ps-icon--back&quot;&gt;&lt;/i&gt;" data-owl-nav-right="&lt;i class=&quot;ps-icon--next&quot;&gt;&lt;/i&gt;">
               {% for best_menu in best_menus %}
               <div class="ps-product">
                 <div class="ps-product__thumbnail">
-                  <div class="ps-badge"><span>-50%</span></div><a class="ps-product__overlay" href="#"></a><img src="/media/{{ best_menu.photo }}" alt="">
+                  {% if best_menu.rebate != 0 %}
+                  <div class="ps-badge"><span>-{{best_menu.rebate}}%</span></div>
+                  {% else %}
+                  <div></div>
+                  {% endif %}
+                  <a class="ps-product__overlay" href="#"></a><img src="/media/{{ best_menu.photo }}" alt="">
                   <ul class="ps-product__action">
-                    <li><a class="popup-modal" href="#quickview-modal" data-effect="mfp-zoom-out" data-tooltip="View"><i class="ps-icon--search"></i></a></li>
+                    <li><a href="#"  data-tooltip="View"><i class="ps-icon--search"></i></a></li>
                     <li><a href="#" data-tooltip="Add to wishlist"><i class="ps-icon--heart"></i></a></li>
                     <li><a href="#" data-tooltip="Compare"><i class="ps-icon--reload"></i></a></li>
                     <li><a href="#" data-tooltip="Add to cart"><i class="ps-icon--shopping-cart"></i></a></li>
                   </ul>
                 </div>
                 <div class="ps-product__content"><a class="ps-product__title" href="/product/{{ best_menu.id }}/">{{ best_menu.title }}</a>
-                  <div class="ps-product__category"><a class="ps-product__category" href="product-listing.html">cupcake</a><a class="ps-product__category" href="product-listing.html">sweet</a><a class="ps-product__category" href="product-listing.html">bio</a>
+                  <div class="ps-product__category"><a class="ps-product__category">{{best_menu.category}}</a>
                   </div>
                   <select class="ps-rating">
                     <option value="1">1</option>

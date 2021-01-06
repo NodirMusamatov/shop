@@ -18,6 +18,7 @@ def indexHandler(request):
         categorys = Category.objects.filter(is_main=True)
         sizes = Size.objects.filter(status=0)
         awards = Award.objects.all()
+        category_id = int(request.GET.get('category_id', 0))
 
 
         return render(request, 'index.html', {
@@ -84,7 +85,7 @@ def productHandler(request):
     q = request.GET.get('q', '')
     category_id = int(request.GET.get('category_id', 0))
 
-    limit = int(request.GET.get('limit', 3))
+    limit = int(request.GET.get('limit', 6))
     p = int(request.GET.get('p', 1))
     stop = p * limit
     start = (p - 1) * limit
@@ -114,6 +115,7 @@ def productHandler(request):
 
     best_menus = Menu.objects.filter(is_best_seller=True)[:3]
     rebate_menus = Menu.objects.filter(is_rebate=True)
+    is_new = Menu.objects.filter(is_new=True)
     informations = Information.objects.filter(status=0)
     categorys = Category.objects.filter()
     sizes = Size.objects.filter(status=0)
@@ -126,7 +128,8 @@ def productHandler(request):
         'best_menus': best_menus,
         'rebate_menus': rebate_menus,
         'menu': menu,
-        'menu_count':menu_count,
+        'menu_count': menu_count,
+        'is_new': is_new,
 
         'limit': limit,
         'p': p,
@@ -156,6 +159,8 @@ def ProductDetailHandler(request, product_id):
     informations = Information.objects.filter(status=0)
     categorys = Category.objects.filter()
     sizes = Size.objects.filter(status=0)
+    best_menus = Menu.objects.filter(is_best_seller=True)
+
 
 
     return render(request, 'product-detail.html', {
@@ -166,7 +171,8 @@ def ProductDetailHandler(request, product_id):
         'cheffs': cheffs,
         'informations': informations,
         'categorys': categorys,
-        'sizes': sizes
+        'sizes': sizes,
+        'best_menus': best_menus
     })
 
 

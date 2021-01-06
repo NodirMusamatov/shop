@@ -4,13 +4,13 @@ from ckeditor.fields import RichTextField
 # Create your models here.
 
 class Slider(models.Model):
-    title = RichTextField()
+    main_title = models.CharField(max_length=300, blank=True)
     photo = models.ImageField(upload_to='upload')
-    description = RichTextField()
+    mini_description = models.CharField(max_length=500, blank=True)
     status = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.title
+        return self.main_title
 
 
 
@@ -60,9 +60,11 @@ class Menu(models.Model):
     photo3 = models.ImageField(upload_to='upload', blank=True)
     is_best_seller = models.BooleanField(default=0, blank=True)
     is_rebate = models.BooleanField(default=0, blank=True)
+    is_new = models.BooleanField(default=0, blank=True)
     tags = models.CharField(max_length=300)
     size = models.ForeignKey(Size, on_delete=models.CASCADE)
-
+    rebate = models.IntegerField(default=0, blank=True)
+    recipe = models.TextField(blank=True)
 
     def __str__(self):
         return self.title
@@ -122,6 +124,7 @@ class Register(models.Model):
 
 
 class Information(models.Model):
+    logo = models.ImageField(upload_to='upload', blank=True)
     address = models.CharField(max_length=300, blank=True)
     phone_info = models.CharField(max_length=300, blank=True)
     baker_info = models.TextField(blank=True)
@@ -146,6 +149,9 @@ class Information(models.Model):
     reviews_foto = models.ImageField(upload_to='upload', blank=True)
     design_by = models.CharField(max_length=300, blank=True)
     status = models.IntegerField(default=0, blank=True)
+    banner1 = models.ImageField(upload_to='upload', blank=True)
+    banner2 = models.ImageField(upload_to='upload', blank=True)
+
 
 
 
