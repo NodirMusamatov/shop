@@ -23,20 +23,25 @@
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 col-lg-push-3 col-md-push-3">
               <div class="ps-shop-grid pt-80">
                     <div class="ps-shop-features">
+                      {% for information in informations%}
                       <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 "><img class="mb-30" src="/static/images/product-banner/012x.jpg" alt="">
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 "><img class="mb-30" src="/media/{{ information.banner1 }}" alt="">
                             </div>
-                            <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 "><img class="mb-30" src="/static/images/product-banner/022x.jpg" alt="">
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 "><img class="mb-30" src="/media/{{ information.banner2 }}" alt="">
                             </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 "><img class="mb-30" src="/media/{{ information.banner3 }}" alt="">
+                            </div>
+
                       </div>
+                      {% endfor %}
                     </div>
                     <div class="ps-shop-filter">
                       <div class="row">
                             <div class="col-lg-5 col-md-4 col-sm-4 col-xs-12 ">
                               <div class="form-group">
-                                <label>Short by:</label>
+                                <label>Показать:</label>
                                 <select class="ps-select" data-placeholder="Popupar product">
-                                  <option value="01">Popular products</option>
+                                  <option value="01"> Категория </option>
                                   <option value="01">Item 01</option>
                                   <option value="02">Item 02</option>
                                   <option value="03">Item 03</option>
@@ -45,9 +50,9 @@
                             </div>
                             <div class="col-lg-5 col-md-4 col-sm-4 col-xs-12 ">
                               <div class="form-group">
-                                <label>Show:</label>
+                                <label>КОРОТКИЙ ПО:</label>
                                 <select class="ps-select" data-placeholder="Show:">
-                                  <option value="01">SHOW</option>
+                                  <option value="01">Популярые товары</option>
                                   <option value="02">Item 02</option>
                                   <option value="03">Item 03</option>
                                 </select>
@@ -124,11 +129,11 @@
                               </aside>
                               <aside class="ps-widget ps-widget--sidebar ps-widget--category">
                                 <div class="ps-widget__header">
-                                  <h3 class="ps-widget__title">CATEGORY</h3>
+                                  <h3 class="ps-widget__title">Категория</h3>
                                 </div>
                                 <div class="ps-widget__content">
                                   <ul class="ps-list--circle">
-                                    <li {% if not category_id %} class="current" {% endif %}><a href="/product/?limit={{ limit }}&category_id=0"><span class="circle"></span>All bakery ({{ menu_count }})</a></li>
+                                    <li {% if not category_id %} class="current" {% endif %}><a href="/product/?limit={{ limit }}&category_id=0"><span class="circle"></span>Все товары({{ menu_count }})</a></li>
                                     {% for category in categorys %}
                                     <li {% if category_id == category.id %} class="current" {% endif %}><a href="/product/?limit={{ limit }}&category_id={{ category.id }}"><span class="circle"></span>{{ category.title }}{% if category_id == category.id %} ({{ item_count }}) {% endif %}</a></li>
                                     {% endfor %}
@@ -137,22 +142,25 @@
                               </aside>
                               <aside class="ps-widget ps-widget--sidebar ps-widget--filter">
                                 <div class="ps-widget__header">
-                                  <h3 class="ps-widget__title">Fillter Prices</h3>
+                                  <h3 class="ps-widget__title">Фильтр цены</h3>
                                 </div>
                                 <div class="ps-widget__content">
                                   <div class="ac-slider" data-default-min="300" data-default-max="2000" data-max="3450" data-step="50" data-unit="$"></div>
-                                  <p class="ac-slider__meta">Price:<span class="ac-slider__value ac-slider__min"></span>-<span class="ac-slider__value ac-slider__max"></span></p><a class="ac-slider__filter ps-btn ps-btn--xs" href="#">Filter</a>
+                                  <p class="ac-slider__meta">Цена:<span class="ac-slider__value ac-slider__min"></span>-<span class="ac-slider__value ac-slider__max"></span></p><a class="ac-slider__filter ps-btn ps-btn--xs" href="#">Фильтр</a>
                                 </div>
                               </aside>
                               <aside class="ps-widget ps-widget--sidebar ps-widget--ads">
                                 <div class="ps-widget__header">
-                                  <h3 class="ps-widget__title">Ads Banner</h3>
+                                  <h3 class="ps-widget__title">Баннеры</h3>
                                 </div>
-                                <div class="ps-widget__content"><img src="/static/images/widget/banner2x.png" alt=""></div>
+                                {% for information in informations%}
+                                <div class="ps-widget__content"><img src="/media/{{ information.banner1 }}" alt="">
+                                </div>
+                                {% endfor %}
                               </aside>
                               <aside class="ps-widget ps-widget--sidebar ps-widget--best-seller">
                                 <div class="ps-widget__header">
-                                  <h3 class="ps-widget__title">Best seller</h3>
+                                  <h3 class="ps-widget__title">Часто продаваемые сладости</h3>
                                 </div>
                                 <div class="ps-widget__content">
                                   {% for best_menu in best_menus %}
@@ -170,7 +178,7 @@
                               </aside>
                               <aside class="ps-widget ps-widget--sidebar ps-widget--tags">
                                 <div class="ps-widget__header">
-                                  <h3 class="ps-widget__title">TAGS</h3>
+                                  <h3 class="ps-widget__title">Теги</h3>
                                 </div>
                                 <div class="ps-widget__content">
                                       <ul class="ps-tags">

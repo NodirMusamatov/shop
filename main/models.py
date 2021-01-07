@@ -151,6 +151,9 @@ class Information(models.Model):
     status = models.IntegerField(default=0, blank=True)
     banner1 = models.ImageField(upload_to='upload', blank=True)
     banner2 = models.ImageField(upload_to='upload', blank=True)
+    banner3 = models.ImageField(upload_to='upload', blank=True)
+
+
 
 
 

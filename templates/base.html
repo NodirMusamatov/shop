@@ -145,7 +145,7 @@
           <div class="ps-subscribe">
             <div class="row">
                   <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 ">
-                    <h4>ABOUT US</h4>
+                    <h4>О НАС</h4>
                     {% for information in informations %}
                     <p> {{ information.about_info }} </p>
                     {% endfor %}
@@ -155,13 +155,13 @@
                   </div>
                   {% endfor %}
                   <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 ">
-                    <h4>SUBSCRIBE EMAIL</h4>
+                    <h4>Ваша почта</h4>
                     {% for information in informations %}
                     <p>{{ information.footer_info }}</p>
                     {% endfor %}
                     <form class="ps-subscribe__form" method="post" action="_action">
-                      <input class="form-control" type="text" placeholder="Type your email...">
-                      <button class="ps-btn ps-btn--sm">Subscribe</button>
+                      <input class="form-control" type="text" placeholder="Введите свой адрес электронной почты ...">
+                      <button class="ps-btn ps-btn--sm">Подписывайся</button>
                     </form>
                   </div>
             </div>
@@ -175,7 +175,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 ">
                   <div class="ps-widget ps-widget--footer ps-widget--payment">
                     <div class="ps-widget__header">
-                      <h3 class="ps-widget__title">PAYMENTS ACCEPTED</h3>
+                      <h3 class="ps-widget__title">ПЛАТЕЖИ ПРИНЯТЫ</h3>
                     </div>
                     <div class="ps-widget__content">
                       {% for information in informations %}
@@ -192,7 +192,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 ">
                   <div class="ps-widget ps-widget--footer ps-widget--worktime">
                     <div class="ps-widget__header">
-                      <h3 class="ps-widget__title">WORK TIME</h3>
+                      <h3 class="ps-widget__title">РАБОЧЕЕ ВРЕМЯ</h3>
                     </div>
                     <div class="ps-widget__content">
                       {% for information in informations %}
@@ -204,15 +204,15 @@
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 ">
                   <div class="ps-widget ps-widget--footer ps-widget--order">
                     <div class="ps-widget__header">
-                      <h3 class="ps-widget__title">ORDERS AND RETURNS</h3>
+                      <h3 class="ps-widget__title">ЗАКАЗЫ И ВОЗВРАТ</h3>
                     </div>
                     <div class="ps-widget__content">
                           {% for information in informations %}
                           <ul class="ps-list--line">
-                            <li><a href="{{ information.order_info }}">Order</a></li>
-                            <li><a href="{{ information.order_info1 }}">Shipping</a></li>
-                            <li><a href="{{ information.order_info2 }}">Policy Return Policy</a></li>
-                            <li><a href="{{ information.order_info3 }}">Payments</a></li>
+                            <li><a href="{{ information.order_info }}">Порядок</a></li>
+                            <li><a href="{{ information.order_info1 }}">Перевозка</a></li>
+                            <li><a href="{{ information.order_info2 }}">Политика Возврата</a></li>
+                            <li><a href="{{ information.order_info3 }}">Платежи</a></li>
                           </ul>
                           {% endfor %}
                     </div>
@@ -221,7 +221,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 ">
                   <div class="ps-widget ps-widget--footer ps-widget--connect">
                     <div class="ps-widget__header">
-                      <h3 class="ps-widget__title">CONNECT US</h3>
+                      <h3 class="ps-widget__title">СВЯЗАТЬСЯ С НАМИ</h3>
                     </div>
                     {% for information in informations %}
                     <div class="ps-widget__content">
@@ -231,7 +231,7 @@
                             <li><a href="{{ information.whatsapp_info }}"><i class="fa fa-whatsapp"></i></a></li>
                             <li><a href="{{ information.instagram_info }}"><i class="fa fa-instagram"></i></a></li>
                           </ul><a href="{{ information.app_store }}"><img src="/static/images/app.jpg" alt=""></a>
-                      <p>@2020 Design by<a href="#"> {{ information.design_by}}</a>.</p>
+                      <p>@2021 Design by<a href="#"> {{ information.design_by}}</a>.</p>
                     </div>
                     {% endfor %}
                   </div>

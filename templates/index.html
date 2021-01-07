@@ -73,7 +73,7 @@
                     <option value="1">4</option>
                     <option value="5">5</option>
                   </select>
-                  <p class="ps-product__price">£ {{ best_menu.new_price }}</p>
+                  <p class="ps-product__price"> {{ best_menu.new_price }} тенге</p>
                 </div>
               </div>
               {% endfor %}
@@ -112,6 +112,9 @@
 
       <section class="ps-section ps-section--list-product pt-40 pb-80">
         <div class="container">
+          <div class="ps-section__header text-center mb-100">
+            <h4 class="ps-section__top"> Невероятные скидки</h4>
+          </div>
           <div class="row">
             {% for category in categorys %}
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
@@ -124,10 +127,10 @@
                     <div class="ps-product--list">
                       <div class="ps-product__thumbnail"><a class="ps-product__overlay" href="/product/{{ rebate_menu.id }}/"></a><img src="/media/{{ rebate_menu.photo }}" alt=""></div>
                       <div class="ps-product__content">
-                        <h4 class="ps-product__title"><a href="product-detail.html">{{rebate_menu.title}}</a></h4>
+                        <h4 class="ps-product__title"><a href="/product/{{ rebate_menu.id }}/">{{ rebate_menu.title }}</a></h4>
                         <p>{{ rebate_menu.description }}</p>
                         <p class="ps-product__price">
-                          <del>£ {{rebate_menu.old_price}}</del>£ {{rebate_menu.new_price}}
+                          <del> {{rebate_menu.old_price}} тенге</del> {{rebate_menu.new_price}} тенге
                         </p><a class="ps-btn ps-btn--xs" href="/product/{{ rebate_menu.id }}/">Подробнее<i class="fa fa-angle-right"></i></a>
                       </div>
                     </div>
@@ -144,7 +147,7 @@
           <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
                   <div class="ps-section__header">
-                    <h3 class="ps-section__title ps-section__title--left">OUR BAKER</h3>
+                    <h3 class="ps-section__title ps-section__title--left">НАШ ПЕКАРЬ</h3>
                     {% for information in informations %}
                     <p> {{ information.baker_info }} </p>
                     {% endfor %}
@@ -181,42 +184,37 @@
 
       <div class="ps-section ps-section--partner">
         <div class="container">
-
-          <a class="owl-slider">
-            {% for partner in partners %}
-            <a href=""><img src="/media/{{ partner.logo }}" alt=""></a>
-            {% endfor %}
+          <div class="owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="10000" data-owl-gap="40" data-owl-nav="false" data-owl-dots="false" data-owl-animate-in="" data-owl-animate-out="" data-owl-item="6" data-owl-item-xs="3" data-owl-item-sm="4" data-owl-item-md="5" data-owl-item-lg="6" data-owl-nav-left="&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;/i&gt;" data-owl-nav-right="&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;/i&gt;"><a href="#"><img src="/static/images/partner/1.png" alt=""></a><a href="#"><img src="/static/images/partner/2.png" alt=""></a><a href="#"><img src="/static/images/partner/3.png" alt=""></a><a href="#"><img src="/static/images/partner/4.png" alt=""></a><a href="#"><img src="/static/images/partner/5.png" alt=""></a><a href="#"><img src="/static/images/partner/6.png" alt=""></a><a href="#"><img src="/static/images/partner/7.png" alt=""></a><a href="#"><img src="/static/images/partner/8.png" alt=""></a>
+          </div>
         </div>
-
-      </div>
       <section class="ps-section ps-section--map">
         <div id="contact-map" data-address="New York, NY" data-title="BAKERY LOCATION!" data-zoom="17"></div>
         <div class="ps-delivery">
           <div class="ps-delivery__header">
-            <h3>Contact Us</h3>
-            <p>Our Company is the best, meet the creative team that never sleeps. Say something to us we will answer to you.</p>
+            <h3>Связаться с нами</h3>
+            <p>Наша Компания - лучшая, встречайте творческий коллектив, который никогда не спит. Скажите нам что-нибудь, мы вам ответим.</p>
           </div>
           <div class="ps-delivery__content">
             <form id="request" class="ps-delivery__form"  action="/" method="post">
               {% csrf_token %}
               <div class="form-group">
-                <label>Name<span>*</span></label>
+                <label>Имя<span>*</span></label>
                 <input class="form-control" type="text" name="name">
               </div>
               <div class="form-group">
-                <label>Email<span>*</span></label>
+                <label>Почта<span>*</span></label>
                 <input class="form-control" type="email" name="email">
               </div>
               <div class="form-group">
-                <label>Phone Number<span>*</span></label>
+                <label>Телефон номер<span>*</span></label>
                 <input class="form-control" type="text" name="phone">
               </div>
               <div class="form-group">
-                <label>Your message<span>*</span></label>
+                <label>Ваша сообщения<span>*</span></label>
                 <textarea class="form-control" name="message"></textarea>
               </div>
               <div class="form-group text-center">
-                <button class="ps-btn">Send Message<i class="fa fa-angle-right"></i></button>
+                <button class="ps-btn">Отправить<i class="fa fa-angle-right"></i></button>
               </div>
             </form>
           </div>

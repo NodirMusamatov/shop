@@ -141,7 +141,7 @@ def productHandler(request):
         'prev_p': prev_p,
         'next_p': next_p,
 
-        'category_id':category_id,
+        'category_id': category_id,
         'q': q
     })
 

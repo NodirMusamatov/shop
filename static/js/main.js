@@ -437,14 +437,14 @@ $("#request").submit(function() {
                     var $this = $(this),
                         values = ui.values;
 
-                    min.text('$' + values[0]);
-                    max.text('$' + values[1]);
+                    min.text( values[0] + 'тенге');
+                    max.text( values[1] + 'тенге');
                 }
             });
 
             var values = el.slider("option", "values");
-            min.text('$' + values[0]);
-            max.text('$' + values[1]);
+            min.text(values[0] + 'тенге');
+            max.text( values[1] + 'тенге');
         }
         else {
             return false;
