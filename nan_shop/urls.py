@@ -39,7 +39,7 @@ from django.urls import path
 from django.conf.urls import url, include
 from django.views.static import serve
 from nan_shop import settings
-from main.views import indexHandler, aboutItemHandler, productHandler, page404Handler, ProductDetailHandler , GaleryHandler, RebateHandler, ContactHandler
+from main.views import indexHandler, aboutItemHandler, productHandler, page404Handler, ProductDetailHandler , GaleryHandler, RebateHandler, ContactHandler, BlogHandler, BlogDetailHandler
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -56,7 +56,9 @@ urlpatterns = [
     path('galery/', GaleryHandler),
     path('rebate/', RebateHandler),
     path('contact/', ContactHandler),
+    path('blog/', BlogHandler),
     path('product/<int:product_id>/', ProductDetailHandler),
+    path('blog/<int:blog_id>/', BlogDetailHandler),
 
     #path('*', page404Handler),
 ]

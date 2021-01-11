@@ -38,7 +38,7 @@ $("#request").submit(function() {
             dataType: 'html',
             data: oData,
             success:function(){
-                alert("uspeshno");
+                alert("Успешно отправлено");
             }
 	    })
 

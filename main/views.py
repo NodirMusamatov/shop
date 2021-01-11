@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import render
-from main.models import Slider, Review, Menu, Cheff, Partner, Register, Information, Category, Size, Award, Galery,Rebate,Filial
+from main.models import Slider, Review, Menu, Cheff, Partner, Register, Information, Category, Size, Award, Galery,Rebate, Filial, Blog
 import math
 # Create your views here.
 
@@ -216,4 +216,51 @@ def ContactHandler(request):
     })
 
 
+def BlogHandler(request):
+    informations = Information.objects.filter(status=0)
+    p = int(request.GET.get('p', 1))
+    limit = int(request.GET.get('limit', 3))
+    stop = p * limit
+    start = (p - 1) * limit
+    prev_p = p - 1
+    next_p = p + 1
+    item_count = Blog.objects.filter(status=0).count()
+    page_count = math.ceil(item_count / limit)
+    page_range = range(1, page_count + 1)
+    blogs = Blog.objects.filter(status=0)[start:stop]
+    best_menus = Menu.objects.filter(is_best_seller=True)[:3]
+    menu = Menu.objects.filter(status=0).order_by('-rating')
 
+    return render(request, 'blog.html', {
+        'page': 'blog',
+        'informations': informations,
+        'stop': stop,
+        'start': start,
+        'prev_p': prev_p,
+        'next_p': next_p,
+        'page_count': page_count,
+        'page_range': page_range,
+        'blogs': blogs,
+        'best_menus': best_menus,
+        'menu': menu,
+        'limit': limit,
+        'p': p
+
+    })
+
+def BlogDetailHandler(request, blog_id):
+    blog_1 = Blog.objects.get(id=int(blog_id))
+    informations = Information.objects.filter(status=0)
+    blogs = Blog.objects.filter(status=0)
+    best_menus = Menu.objects.filter(is_best_seller=True)[:3]
+    menu = Menu.objects.filter(status=0).order_by('-rating')
+
+    return render(request, 'blog-detail.html', {
+        'page': 'blog',
+        'informations': informations,
+        'blogs': blogs,
+        'best_menus': best_menus,
+        'menu': menu,
+        'blog_1': blog_1
+
+    })

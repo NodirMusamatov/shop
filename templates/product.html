@@ -78,7 +78,7 @@
 
                             </div>
                             <div class="ps-product__content"><a class="ps-product__title" href="/product/{{ menu.id }}/">{{ menu.title }}</a>
-                              <div class="ps-product__category"><a class="ps-product__category" href="#">{{ menu.category }}</a>
+                              <div class="ps-product__category"><a class="ps-product__category" href="/product/?category_id={{menu.category.id }}">{{ menu.category }}</a>
                               </div>
                               <select class="ps-rating">
                                 <option value="1">1</option>
@@ -119,7 +119,7 @@
               <div class="ps-sidebar">
                               <aside class="ps-widget ps-widget--sidebar ps-widget--search">
                                 <form method="get" action="/product/">
-                                  <input class="form-control" name="q" type="text" placeholder="title...">
+                                  <input class="form-control" name="q" type="text" placeholder="Поиск...">
                                   <button type="submit"><i class="ps-icon--search"></i></button>
                                 </form>
                               </aside>

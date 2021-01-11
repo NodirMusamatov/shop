@@ -4049,6 +4049,11 @@ textarea.form-control {
   border-color: #00adf2;
 }
 
+.ps-post .ps-post__action a.whatsapp {
+  background-color: green;
+  border-color: white;
+}
+
 .ps-post .ps-post__action a.like {
   color: #b8c6c7;
   border-color: #b8c6c7;

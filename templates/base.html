@@ -4,7 +4,6 @@
 <!--[if IE 9]><html class="ie ie9"><![endif]-->
 <html lang="en">
   <head>
-    {% load static %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,9 +14,10 @@
     <meta name="author" content="#{author}">
     <meta name="keywords" content="#{keyword}">
     <meta name="description" content="#{description}">
-    {% for information in informations %}
+      {% for information in informations %}
       <link rel="icon" href="/media/{{ information.logo }}">
-    {% endfor %}
+      {% endfor %}
+
 
     <title>Сайрам Нан</title>
     <!-- Fonts-->
@@ -113,7 +113,8 @@
                 <ul class="menu menu--right">
                 <li {% if page == 'galery' %} class="current " {% endif %} > <a href="/galery/"> Галерея </a></li>
 
-                  <li><a href="blog-listing.html">Блог</a></li>
+                 <li {% if page == 'blog' %} class="current " {% endif %} > <a href="/blog/"> Блог </a></li>
+
                   <li {% if page == 'contact' %} class="current " {% endif %} > <a href="/contact/"> Контакты </a></li>
 
                 </ul>

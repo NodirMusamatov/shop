@@ -197,6 +197,28 @@ class Filial(models.Model):
 
 
 
+class Blog(models.Model):
+    title = models.CharField(max_length=300, blank=True)
+    photo = models.ImageField(upload_to='upload', blank=True)
+    facebook = models.CharField(max_length=300, blank=True)
+    whatsapp = models.CharField(max_length=300, blank=True)
+    gmail = models.CharField(max_length=300, blank=True)
+    data = models.CharField(max_length=300, blank=True)
+    description = models.TextField(blank=True)
+    status = models.IntegerField(default=0, blank=True)
+
+
+
+
+    def __str__(self):
+        return self.title
+
+
+
+
+
+
+
 
 
 
