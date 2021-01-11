@@ -938,7 +938,7 @@ img {
 iframe {
   border: 0;
   max-width: 100%;
-  width: 100%;
+
 }
 
 * {
@@ -2063,6 +2063,14 @@ textarea.form-control {
   -ms-transform-style: flat;
   -o-transform-style: flat;
   transform-style: flat;
+}
+.ps-product__thumbnail .n img {
+  -webkit-transform-style: flat;
+  -moz-transform-style: flat;
+  -ms-transform-style: flat;
+  -o-transform-style: flat;
+  transform-style: flat;
+  max-height: 150px;
 }
 
 .ps-product .ps-product__thumbnail:hover {
@@ -5319,7 +5327,7 @@ textarea.form-control {
 .ps-section--map .ps-delivery {
   position: absolute;
   top: 0;
-  left: 50%;
+  left: 109%;
   height: 100%;
   padding: 50px;
   width: 455px;

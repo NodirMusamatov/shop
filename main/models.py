@@ -34,6 +34,8 @@ class Category(models.Model):
     title = models.CharField(max_length=300)
     status = models.IntegerField(default=0)
     is_main = models.BooleanField(default=0, blank=True)
+    rating = models.IntegerField(default=0)
+
 
     def __str__(self):
         return self.title
@@ -156,11 +158,42 @@ class Information(models.Model):
 
 
 
-
-
     def __str__(self):
         return self.address
 
+
+class Galery(models.Model):
+    name = models.CharField(max_length=300)
+    rating = models.IntegerField(default=0)
+    photo = models.ImageField(upload_to='upload')
+    status = models.IntegerField(default=0)
+
+
+    def __str__(self):
+        return self.name
+
+
+class Rebate(models.Model):
+    name = models.CharField(max_length=300, blank=True)
+
+    def __str__(self):
+        return self.name
+
+
+
+
+class Filial(models.Model):
+    title = models.CharField(max_length=300, blank=True)
+    address = models.CharField(max_length=300, blank=True)
+    phone = models.CharField(max_length=300, blank=True)
+    facebook = models.CharField(max_length=300, blank=True)
+    whatsapp = models.CharField(max_length=300, blank=True)
+    gmail = models.CharField(max_length=300, blank=True)
+
+
+
+    def __str__(self):
+        return self.title
 
 
 

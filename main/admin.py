@@ -64,3 +64,18 @@ class AwardAdmin(admin.ModelAdmin):
 
 admin.site.register(Award, AwardAdmin)
 
+
+class GaleryAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(Galery, GaleryAdmin)
+
+
+class RebateAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(Rebate, RebateAdmin)
+
+class FilialAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(Filial, FilialAdmin)
+
+

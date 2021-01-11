@@ -8,11 +8,11 @@
       <!-- Heros-->
       <div class="ps-section--hero"><img src="/static/images/hero/01.jpg" alt="">
         <div class="ps-section__content text-center">
-          <h3 class="ps-section__title">OUR BAKERY</h3>
+          <h3 class="ps-section__title">Продукты</h3>
           <div class="ps-breadcrumb">
             <ol class="breadcrumb">
-              <li><a href="/">Home</a></li>
-              <li class="active">Shop</li>
+              <li><a href="/">Главная</a></li>
+              <li class="active">Продукты</li>
             </ol>
           </div>
         </div>
@@ -42,9 +42,9 @@
                                 <label>Показать:</label>
                                 <select class="ps-select" data-placeholder="Popupar product">
                                   <option value="01"> Категория </option>
-                                  <option value="01">Item 01</option>
-                                  <option value="02">Item 02</option>
-                                  <option value="03">Item 03</option>
+                                  {% for category in categorys %}
+                                  <option value="01"> {{category.title}}</option>
+                                  {% endfor %}
                                 </select>
                               </div>
                             </div>
@@ -53,8 +53,9 @@
                                 <label>КОРОТКИЙ ПО:</label>
                                 <select class="ps-select" data-placeholder="Show:">
                                   <option value="01">Популярые товары</option>
-                                  <option value="02">Item 02</option>
-                                  <option value="03">Item 03</option>
+                                  {% for best_menu in best_menus %}
+                                  <option value="02">{{ best_menu.title }}</option>
+                                  {% endfor %}
                                 </select>
                               </div>
                             </div>
@@ -71,15 +72,10 @@
                               {% else %}
                                 <div></div>
                               {% endif %}
+                              <div class="ps-product__thumbnail n">
+                              <a class="ps-product__overlay" href="/product/{{ menu.id }}/"></a><img src="/media/{{ menu.photo1 }}" alt="">
+                              </div>
 
-                              <a class="ps-product__overlay" href="#"></a><img src="/media/{{ menu.photo }}" alt="">
-
-                                <ul class="ps-product__action">
-                                <li><a class="popup-modal" href="#quickview-modal" data-effect="mfp-zoom-out" data-tooltip="View"><i class="ps-icon--search"></i></a></li>
-                                <li><a href="#" data-tooltip="Add to wishlist"><i class="ps-icon--heart"></i></a></li>
-                                <li><a href="#" data-tooltip="Compare"><i class="ps-icon--reload"></i></a></li>
-                                <li><a href="#" data-tooltip="Add to cart"><i class="ps-icon--shopping-cart"></i></a></li>
-                              </ul>
                             </div>
                             <div class="ps-product__content"><a class="ps-product__title" href="/product/{{ menu.id }}/">{{ menu.title }}</a>
                               <div class="ps-product__category"><a class="ps-product__category" href="#">{{ menu.category }}</a>
@@ -91,7 +87,7 @@
                                 <option value="1">4</option>
                                 <option value="5">5</option>
                               </select>
-                              <p class="ps-product__price">£ {{ menu.new_price }} </p>
+                              <p class="ps-product__price"> {{ menu.new_price }} тенге</p>
                             </div>
                           </div>
                         </div>
@@ -100,7 +96,7 @@
                       <div class="ps-pagination">
                           <ul class="pagination">
                                   {% if p != 1 %}
-                                  <li><a class="first" href="/product?limit={{ limit }}&p={{ prev_p }}"><i class="fa fa-angle-left"></i></a></li>
+                                  <li><a class="first" href="/product?limit={{ limit }}&p={{ prev_p }}{% if q %}&q={{ q }}{% endif %}{% if category_id %}&category_id={{ category_id }}{% endif %}"><i class="fa fa-angle-left"></i></a></li>
                                   {% endif %}
 
                                   {% for x in page_range %}
@@ -112,7 +108,7 @@
                                   {% endfor %}
 
                                   {% if p < page_count  %}
-                                  <li><a class="last" href="/product?limit={{ limit }}&p={{ next_p }}"><i class="fa fa-angle-right"></i></a></li>
+                                  <li><a class="last" href="/product?limit={{ limit }}&p={{ next_p }}{% if q %}&q={{ q }}{% endif %}{% if category_id %}&category_id={{ category_id }}{% endif %}"><i class="fa fa-angle-right"></i></a></li>
                                   {% endif %}
                           </ul>
                       </div>
@@ -165,12 +161,12 @@
                                 <div class="ps-widget__content">
                                   {% for best_menu in best_menus %}
                                   <div class="ps-product--sidebar">
-                                    <div class="ps-product__thumbnail"><a class="ps-product__overlay" href="#"></a><img src="/media/{{ best_menu.photo }}" alt=""></div>
+                                    <div class="ps-product__thumbnail"><a class="ps-product__overlay" href="/product/{{ best_menu.id }}/"></a><img src="/media/{{ best_menu.photo }}" alt=""></div>
                                     <div class="ps-product__content">
                                       <h4 class="ps-product__title"><a href="product-detail.html">{{best_menu.title}}</a></h4>
                                       <p class="ps-product__price">
                                         <del>{{ best_menu.old_price }}</del>{{ best_menu.new_price }}
-                                      </p><a class="ps-btn ps-btn--xs" href="product-detail.html">Подробнее</a>
+                                      </p><a class="ps-btn ps-btn--xs" href="/product/{{ best_menu.id }}/">Подробнее</a>
                                     </div>
                                   </div>
                                   {% endfor %}

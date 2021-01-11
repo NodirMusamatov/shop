@@ -55,16 +55,11 @@
                   {% else %}
                   <div></div>
                   {% endif %}
-                  <a class="ps-product__overlay" href="#"></a><img src="/media/{{ best_menu.photo }}" alt="">
-                  <ul class="ps-product__action">
-                    <li><a href="#"  data-tooltip="View"><i class="ps-icon--search"></i></a></li>
-                    <li><a href="#" data-tooltip="Add to wishlist"><i class="ps-icon--heart"></i></a></li>
-                    <li><a href="#" data-tooltip="Compare"><i class="ps-icon--reload"></i></a></li>
-                    <li><a href="#" data-tooltip="Add to cart"><i class="ps-icon--shopping-cart"></i></a></li>
-                  </ul>
+                  <a class="ps-product__overlay" href="product/{{ best_menu.id }}/"></a><img src="/media/{{ best_menu.photo }}" alt="">
+
                 </div>
                 <div class="ps-product__content"><a class="ps-product__title" href="/product/{{ best_menu.id }}/">{{ best_menu.title }}</a>
-                  <div class="ps-product__category"><a class="ps-product__category">{{best_menu.category}}</a>
+                  <div class="ps-product__category"><a class="ps-product__category" href="/product/?category_id={{ best_menu.category.id }}">{{best_menu.category}}</a>
                   </div>
                   <select class="ps-rating">
                     <option value="1">1</option>
@@ -188,7 +183,8 @@
           </div>
         </div>
       <section class="ps-section ps-section--map">
-        <div id="contact-map" data-address="New York, NY" data-title="BAKERY LOCATION!" data-zoom="17"></div>
+        <div id="contact-map" data-address="New York, NY" data-title="BAKERY LOCATION!" data-zoom="17"> <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d94403.27128276501!2d69.71203385820313!3d42.319018299999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38a8e6d93242b687%3A0x9253f54645e28c91!2sMavzoley%20Ibragim%20Ata!5e0!3m2!1skk!2skz!4v1610353874254!5m2!1skk!2skz" width="66%" height="650" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
         <div class="ps-delivery">
           <div class="ps-delivery__header">
             <h3>Связаться с нами</h3>

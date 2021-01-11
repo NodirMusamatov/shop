@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import render
-from main.models import Slider, Review, Menu, Cheff, Partner, Register, Information, Category, Size, Award
+from main.models import Slider, Review, Menu, Cheff, Partner, Register, Information, Category, Size, Award, Galery,Rebate,Filial
 import math
 # Create your views here.
 
@@ -173,6 +173,46 @@ def ProductDetailHandler(request, product_id):
         'categorys': categorys,
         'sizes': sizes,
         'best_menus': best_menus
+    })
+
+def GaleryHandler(request):
+    galerys = Galery.objects.filter(status=0)
+    informations = Information.objects.filter(status=0)
+
+    return render(request, 'galery.html', {
+        'page':'galery',
+        'galerys': galerys,
+        'informations': informations
+
+    })
+
+def RebateHandler(request):
+    informations = Information.objects.filter(status=0)
+    rebate_menus = Menu.objects.filter(is_rebate=True)
+    categorys = Category.objects.filter().order_by('-rating')
+
+
+
+    return render(request, 'rebate.html', {
+        'page': 'rebate',
+        'informations': informations,
+        'rebate_menus': rebate_menus,
+        'categorys': categorys
+
+
+    })
+
+def ContactHandler(request):
+    informations = Information.objects.filter(status=0)
+    filials = Filial.objects.all()
+
+
+    return render(request, 'contact.html', {
+        'page': 'contact',
+        'informations': informations,
+        'filials': filials
+
+
     })
 
 
