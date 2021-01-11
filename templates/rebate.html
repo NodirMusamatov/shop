@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+	{% block content %}
+
+<br><br><br>
+<div id="back2top"><i class="fa fa-angle-up"></i></div>
+    <div class="loader"></div>
+    <div class="page-wrap">
+      <div class="ps-section--hero"><img src="/static/images/hero/01.jpg" alt="">
+        <div class="ps-section__content text-center">
+          <h3 class="ps-section__title">Скидки</h3>
+          <div class="ps-breadcrumb">
+            <ol class="breadcrumb">
+              <li><a href="index.html">Главная</a></li>
+              <li class="active">Скидки</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+	      <section class="ps-section ps-section--list-product pt-40 pb-80">
+        <div class="container">
+          <div class="ps-section__header text-center mb-100">
+            <h4 class="ps-section__top"> Невероятные скидки</h4>
+          </div>
+          <div class="row">
+            {% for category in categorys %}
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                  <div class="ps-section__header">
+                    <h3 class="ps-section__title ps-section__title--left">{{category.title}}</h3>
+                  </div>
+                  <div class="ps-section__content">
+                    {% for rebate_menu in rebate_menus %}
+                    {% if rebate_menu.category.id == category.id %}
+                    <div class="ps-product--list">
+                      <div class="ps-product__thumbnail"><a class="ps-product__overlay" href="/product/{{ rebate_menu.id }}/"></a><img src="/media/{{ rebate_menu.photo1 }}" alt=""></div>
+                      <div class="ps-product__content">
+                        <h4 class="ps-product__title"><a href="/product/{{ rebate_menu.id }}/">{{ rebate_menu.title }}</a></h4>
+                        <p>{{ rebate_menu.description }}</p>
+                        <p class="ps-product__price">
+                          <del> {{rebate_menu.old_price}} тенге</del> {{rebate_menu.new_price}} тенге
+                        </p><a class="ps-btn ps-btn--xs" href="/product/{{ rebate_menu.id }}/">Подробнее<i class="fa fa-angle-right"></i></a>
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+
+
+
+{% endblock %}

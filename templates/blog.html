@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+
+	{% block content %}
+
+
+<div id="back2top"><i class="fa fa-angle-up"></i></div>
+    <div class="loader"></div>
+    <div class="page-wrap">
+      <div class="ps-section--hero"><img src="/static/images/hero/01.jpg" alt="">
+        <div class="ps-section__content text-center">
+          <h3 class="ps-section__title">Блог</h3>
+          <div class="ps-breadcrumb">
+            <ol class="breadcrumb">
+              <li><a href="/">Главная</a></li>
+              <li class="active">Блог</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="ps-section--page-reverse">
+        <div class="container">
+          <div class="row">
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 ">
+                  <div class="pt-80 pb-80">
+                    {% for b in blogs %}
+                    <div class="ps-blog-listing">
+                      <div class="ps-post">
+                        <div class="ps-post__thumbnail"><a class="ps-post__overlay" href="/blog/{{ b.id }}/"></a><img src="/media/{{ b.photo }}" alt=""></div>
+                        <div class="ps-post__header"><a class="ps-post__title" href="/blog/{{ b.id }}/">{{ b.title }}</a>
+                          <div class="ps-post__meta"><span><i class="fa fa-calendar-check-o"></i>{{b.data}}</span></div>
+                        </div>
+                        <div class="ps-post__content">
+                          <p>{{ b.description }}</p>
+                        </div>
+                        <footer class="ps-post__footer"><a class="ps-btn ps-btn--sm ps-post__morelink" href="/blog/{{ b.id }}/">Подробнее</a>
+                          <div class="ps-post__action"><a class="facebook" href="#"><i class="fa fa-facebook"></i>Facebook</a><a class="whatsapp" href="#"><i class="fa fa-whatsapp"></i>Whatsapp</a></div>
+                        </footer>
+                      </div>
+                    </div>
+                    {% endfor %}
+                        <div class="ps-pagination">
+                          <ul class="pagination">
+                              {% if p != 1 %}
+                              <li><a class="first" href="/blog?limit={{ limit }}&p={{ prev_p }}"><i class="fa fa-angle-left"></i></a></li>
+                              {% endif %}
+
+                              {% for x in page_range %}
+                                {% if p == x %}
+                                <li><a class="active">{{ x }}</a></li>
+                                {% else %}
+                                <li><a href="/blog?limit={{ limit }}&p={{ x }}">{{ x }}</a></li>
+                                {% endif %}
+                              {% endfor %}
+
+                              {% if p < page_count  %}
+                              <li><a class="last" href="/blog?limit={{ limit }}&p={{ next_p }}"><i class="fa fa-angle-right"></i></a></li>
+                              {% endif %}
+                          </ul>
+
+                        </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
+                  <div class="ps-sidebar">
+                    <aside class="ps-widget ps-widget--sidebar ps-widget--search">
+                      <form method="get" action="/product/">
+                        <input class="form-control" name="q" type="text" placeholder="Поиск...">
+                        <button type="submit"><i class="ps-icon--search"></i></button>
+                      </form>
+                    </aside>
+                    <aside class="ps-widget ps-widget--sidebar ps-widget--ads">
+                                <div class="ps-widget__header">
+                                  <h3 class="ps-widget__title">Баннеры</h3>
+                                </div>
+                                {% for information in informations%}
+                                <div class="ps-widget__content"><img src="/media/{{ information.banner1 }}" alt="">
+                                  <br> <br>
+                                <div class="ps-widget__content"><img src="/media/{{ information.banner2 }}" alt="">
+                                  <br> <br>
+                                <div class="ps-widget__content"><img src="/media/{{ information.banner3 }}" alt="">
+
+
+                                </div>
+                                {% endfor %}
+                              </aside>
+                              <aside class="ps-widget ps-widget--sidebar ps-widget--best-seller">
+                                <div class="ps-widget__header">
+                                  <h3 class="ps-widget__title">Часто продаваемые сладости</h3>
+                                </div>
+                                <div class="ps-widget__content">
+                                  {% for best_menu in best_menus %}
+                                  <div class="ps-product--sidebar">
+                                    <div class="ps-product__thumbnail"><a class="ps-product__overlay" href="/product/{{ best_menu.id }}/"></a><img src="/media/{{ best_menu.photo }}" alt=""></div>
+                                    <div class="ps-product__content">
+                                      <h4 class="ps-product__title"><a href="product-detail.html">{{best_menu.title}}</a></h4>
+                                      <p class="ps-product__price">
+                                        <del>{{ best_menu.old_price }}</del>{{ best_menu.new_price }}
+                                      </p><a class="ps-btn ps-btn--xs" href="/product/{{ best_menu.id }}/">Подробнее</a>
+                                    </div>
+                                  </div>
+                                  {% endfor %}
+                                </div>
+                              </aside>
+                              <aside class="ps-widget ps-widget--sidebar ps-widget--tags">
+                                <div class="ps-widget__header">
+                                  <h3 class="ps-widget__title">Теги</h3>
+                                </div>
+                                <div class="ps-widget__content">
+                                      <ul class="ps-tags">
+                                        {% for menu in menu %}
+                                        <li><a href="#">{{ menu.tags }}</a></li>
+                                        {% endfor %}
+                                      </ul>
+                                </div>
+                              </aside>
+                  </div>
+                </div>
+          </div>
+        </div>
+      </div>
+
+
+{% endblock %}
